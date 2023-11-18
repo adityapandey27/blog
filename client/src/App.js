@@ -9,7 +9,7 @@ import Write from "./pages/write/Write";
 import SinglePost from "./components/singlePost/SinglePost";
 
 function App() {
-  const user=false;
+  const user=true;
 
   return (
     <BrowserRouter>
