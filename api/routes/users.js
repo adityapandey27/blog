@@ -1,7 +1,7 @@
 const router=require('express').Router();
 const User=require('../models/User');
-
-const bcrypt=require('bcrypt')
+const Post=require('../models/Post');
+const bcrypt=require("bcrypt");
 
 // UPDATE
 // '/:id' find the user id and then update it as required
@@ -9,17 +9,19 @@ router.put("/:id",async (req,res)=>{
     // 
     if(req.body.userId === req.params.id)
     {
-        // in case user want to update the password then we are hasing the passowrd again and storing the hashed password in the same key and using $set req.body to update all the values sent by user to update
+        // in case user want to update the password then we are hasing the passowrd again and storing the hashed password in the same key and using $set req.body to update all the values se nt by user to update
         if(req.body.password)
         {
+            console.log("=======",req.body.password);
             const salt=await bcrypt.genSalt(10);
-            req.body.passowrd=await bcrypt.hash(req.body.passowrd,salt)
+            req.body.password=await bcrypt.hash(req.body.password,salt);
+            console.log("=======",req.body.password);
          }
 
         try{
             const updatedUser=await User.findByIdAndUpdate(req.params.id,{
                 $set:req.body,
-            });
+            },{new:true});
             res.status(200).json(updatedUser);
         }
         catch(error){
@@ -34,6 +36,44 @@ router.put("/:id",async (req,res)=>{
 })
 
 
+// Delete
+router.delete("/:id",async (req,res)=>{
+    // 
+    if(req.body.userId === req.params.id)
+    {
+        try{
+            const user=await User.findById(req.params.id);
+            try{
+
+                // deleting post
+                await Post.deleteMany({username:user.username})
+                await User.findByIdAndDelete(req.params.id);
+                res.status(200).json("User has been deleted");
+            }
+            catch(error){
+                res.status(500).json(error)
+            }
+
+        }catch(error){
+            res.status(404).json("User not found")
+        }
+
+    }
+    else{
+        res.status(401).json("You can only delete your account")
+    }
+    
+})
 
 
+// get one user
+router.get("/:id",async (req,res)=>{
+    try{
+        const user= await User.findById(req.params.id)
+        const {password,...others}=user._doc;
+        res.status(200).json(others)
+    }catch(error){
+        res.status(500).json("error")
+    }
+})
 module.exports=router
