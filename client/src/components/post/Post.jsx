@@ -1,21 +1,33 @@
 import React from 'react'
 import "./Post.css"
 import TranspoterCraft from '../../assets/transpoter.jpg'
-export default function Post() {
+import { Link } from 'react-router-dom';
+export default function Post({item}) {
+  console.log(">>>>>>>>>Single post======",item);
   return (
     <div className='post'>
+      
       <img className='postImg' src={TranspoterCraft} alt="TranspoterCraft" />
       <div className="postInfo">
         <div className="postCats">
-            <div className="postCat">Music</div>
-            <div className="postCat">Life</div>
+          {
+            !item.categories.length?"No category is added":item.categories.map((element)=>(
+
+              <div className="postCat">{element.categories}
+              </div>
+            ))
+          }
         </div>
+         <Link to={`/post/${item._id}`} className='link'>
         <span className="postTitle">
-            Lorem ipsum dolor sit  elit </span>
+          {item.title}</span>
+
+         </Link>
         <hr/>
-        <span className="postDate">1 hour ago</span>
+        <span className="postDate">{new Date(item.createdAt).toDateString()}</span>
       </div>
-      <p className='postDesc'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse voluptatibus, harum obcaecati rem maxime accusamus pariatur maiores cupiditate quam odio. Veniam, dolor magnam quis similique praesentium quo repudiandae mollitia illo! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas modi dolores iusto labore expedita nemo, consequatur eveniet! Unde earum porro voluptas facilis veniam alias? Rerum debitis corporis ipsum quibusdam officia.</p>
+      <p className='postDesc'>
+       {item.desc}</p>
     </div>
   )
 }

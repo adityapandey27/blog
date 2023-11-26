@@ -1,7 +1,10 @@
 import React from "react";
 import "./SinglePost.css";
+import { useLocation } from "react-router-dom";
 import Environment from "../../assets/environment.jpg";
 export default function SinglePost() {
+  const location=useLocation()
+  console.log("location",location.pathname.split("/")[2]);
   return (
     <div className="singlePost">
       <div className="singlePostWrapper">
