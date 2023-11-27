@@ -21,13 +21,12 @@ export default function SinglePost() {
   return (
     <div className="singlePost">
       <div className="singlePostWrapper">
-        <img className="singlePostImg" src={Environment} alt="Cute" />
+        <img className="singlePostImg" src={post.image} alt="Cute" />
       </div>
       <h1 className="singlePostTitle">
         {
           post.title
         }
-        Lorem ipsum dolor sit amet consectetur adi
         <div className="singlePostEdit">
           <i className="singlePostIcon far fa-edit" />
           <i className="singlePostIcon far fa-trash-alt" />
@@ -35,10 +34,10 @@ export default function SinglePost() {
       </h1>
       <div className="singlePostInfo">
         <span className="singlePostAuthor">
-          Author:<b>Aditya{post.name}</b>
+          Author:<b>{post.name}</b>
         </span>
         <span className="singlePostDate">
-         1 hour ago
+        
          {
           new Date(post.createdAt).toDateString()
          }
