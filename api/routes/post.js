@@ -45,7 +45,7 @@ router.put("/:id",async (req,res)=>{
 
 
 // DELETE POST
-router.get("/:id",async (req,res)=>{
+router.delete("/:id",async (req,res)=>{
     try{
         const post=await Post.findById(req.params.id);
         if(post.username === req.body.username)
@@ -70,6 +70,8 @@ router.get("/:id",async (req,res)=>{
 
 // GET POST
 router.get("/:id",async (req,res)=>{
+  console.log("I am here");
+  console.log("req",req);
 try{
     const post=await Post.findById(req.params.id);
     res.status(200).json(post);
