@@ -1,16 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./SinglePost.css";
+import axios from "axios";
 import { useLocation } from "react-router-dom";
 import Environment from "../../assets/environment.jpg";
 export default function SinglePost() {
+
   const location=useLocation()
-  console.log("location",location.pathname.split("/")[2]);
+  const [post,setPosts]=useState({})
+  
+  const path=location.pathname.split("/")[2]
+  useEffect(()=>{
+    const getPost=async ()=>{
+      const res= await axios.get("/post/"+path);
+      console.log("resssssssssssssssssssss",res.data);
+      setPosts(res.data)
+    }
+    getPost()
+  },[path]);
+  console.log("[][][][[][[][][]",post);
   return (
     <div className="singlePost">
       <div className="singlePostWrapper">
         <img className="singlePostImg" src={Environment} alt="Cute" />
       </div>
       <h1 className="singlePostTitle">
+        {
+          post.title
+        }
         Lorem ipsum dolor sit amet consectetur adi
         <div className="singlePostEdit">
           <i className="singlePostIcon far fa-edit" />
@@ -19,14 +35,17 @@ export default function SinglePost() {
       </h1>
       <div className="singlePostInfo">
         <span className="singlePostAuthor">
-          Author:<b>Aditya</b>
+          Author:<b>Aditya{post.name}</b>
         </span>
         <span className="singlePostDate">
          1 hour ago
+         {
+          new Date(post.createdAt).toDateString()
+         }
         </span>
         
       </div>
-        <p className="singlePostDesc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates optio reiciendis dolore quia sed, laboriosam doloremque similique corporis atque accusamus obcaecati pariatur ea, tempore ab fugit iure repudiandae asperiores nobis.lo Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam, numquam nam! Animi dolorum facere earum eaque, optio itaque reiciendis possimus aperiam unde quis, rem quos quasi. Excepturi, laboriosam ipsum! Quasi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, aliquid dignissimos! Vel quod rerum a in natus dolores dolor vitae commodi! Alias ex, numquam eos aperiam tempore impedit inventore incidunt?</p>
+        <p className="singlePostDesc">{post.desc}</p>
     </div>
   );
 }
