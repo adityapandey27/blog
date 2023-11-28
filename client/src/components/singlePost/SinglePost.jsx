@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./SinglePost.css";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Environment from "../../assets/environment.jpg";
 export default function SinglePost() {
 
@@ -34,7 +34,10 @@ export default function SinglePost() {
       </h1>
       <div className="singlePostInfo">
         <span className="singlePostAuthor">
-          Author:<b>{post.name}</b>
+          Author:
+          <Link className="link" to={`/?user=${post.username}`}>
+          <b>{post.username}</b>
+          </Link>
         </span>
         <span className="singlePostDate">
         
