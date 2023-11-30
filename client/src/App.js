@@ -9,7 +9,7 @@ import Write from "./pages/write/Write";
 import SinglePost from "./components/singlePost/SinglePost";
 
 function App() {
-  const user=true;
+  const user=false;
 
   return (
     <BrowserRouter>
@@ -18,7 +18,11 @@ function App() {
       <Route  path="/" element={<Home />} />
       <Route path="/register" element={user?<Home/>:<Register/>} />
       <Route path="/login" element={user?<Home/>:<Login/>} />
-      <Route path="/write" element={user?<Write/>:<Register/>} />
+      {
+        user?<Route path="/write" element={<Write/>} />:
+        <Route path="/register" element={<Register/>} />
+      }
+      
       <Route path="/settings" element={user?<Settings/>:<Register/>} />
       <Route path="/post/:postId" element={<Single />} />
 
