@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./Register.css"
 import { Link } from "react-router-dom";
 
 export default function Register() {
+  const [username,setUsername]=useState("");
+  const [email,setEmail]=useState("");
+  const [password,setPassword]=useState("")
   return (
     <div className='Register'>
         <span className="RegisterTitle">Register</span>
