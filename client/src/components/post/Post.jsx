@@ -1,13 +1,16 @@
-import React from 'react'
+
 import "./Post.css"
 import TranspoterCraft from '../../assets/transpoter.jpg'
 import { Link } from 'react-router-dom';
 export default function Post({item}) {
-  console.log(">>>>>>>>>Single post======",item);
+  const PF="http://localhost:5000/images/"
+  
   return (
     <div className='post'>
-      
-      <img className='postImg' src={TranspoterCraft} alt="TranspoterCraft" />
+      {
+        item.photo && 
+      <img className='postImg' src={PF+item.photo} alt="TranspoterCraft" />
+      }
       <div className="postInfo">
         <div className="postCats">
           {
@@ -29,5 +32,6 @@ export default function Post({item}) {
       <p className='postDesc'>
        {item.desc}</p>
     </div>
+    
   )
 }
