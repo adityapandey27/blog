@@ -22,7 +22,7 @@ router.put("/:id",async (req,res)=>{
         if(post.username === req.body.username)
         {
             try{
-                const updatedPost= await Post.findByIdAndUpdate(req.params.id,{
+                const updatedPost= await post.findByIdAndUpdate(req.params.id,{
                     $set:req.body
                 },{new:true})
                 res.status(200).json(updatedPost)
@@ -52,7 +52,9 @@ router.delete("/:id",async (req,res)=>{
         {
             try{
               console.log("her pass");
-                const updatedPost= await Post.delete()
+              console.log("post  check delete",post);
+                const a=await post.deleteOne();
+                console.log("a",a);
                 res.status(200).json("Post has been deleted...")
               }catch(error)
               {
@@ -66,7 +68,7 @@ router.delete("/:id",async (req,res)=>{
 
      }catch(error)
      {
-        res.status(500).json(error)
+        res.status(500).json(" error with internal server error")
      }
 })
 
