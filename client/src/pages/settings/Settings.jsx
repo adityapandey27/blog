@@ -3,7 +3,7 @@ import "./Settings.css";
 import Sidebar from "../../components/sidebar/SideBar";
 import { Context } from "../../context/Context";
 import { useState } from "react";
-import { axios } from "axios";
+import  axios  from "axios";
 export default function Settings() {
   const {user}=useContext(Context);
   const [file,setFile]=useState(null);
