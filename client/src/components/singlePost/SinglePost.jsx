@@ -1,6 +1,5 @@
 import React, { useEffect, useState ,useContext} from "react";
 import { Context } from '../../context/Context';
-
 import "./SinglePost.css";
 import axios from "axios";
 import { Link, useLocation } from "react-router-dom";
@@ -19,17 +18,15 @@ export default function SinglePost() {
   useEffect(()=>{
     const getPost=async ()=>{
       const res= await axios.get("/post/"+path);
-      console.log("resssssssssssssssssssss",res.data);
       setPosts(res.data)
       setTitle(res.data.title);
       setDesc(res.data.desc);
     }
     getPost()
-  },[path]);
+  },[path,updateMode]);
 
   const handleDelete=async()=>{
     try{
-      console.log(user.username);
       await axios.delete(`/post/${post._id}`,{data:{username:user.username}});
       window.location.replace("/");
     }catch(error){
@@ -42,15 +39,12 @@ export default function SinglePost() {
       await axios.put(`/post/${post._id}`,{
         data:{username:user.username,title,desc},
       });
-      // window.location.reload();
       setUpdateMode(false);
-
     }catch(error){
 
     }
   }
 
-  console.log("[][][][[][[][][]",post);
   return (
     <div className="singlePost">
       <div className="singlePostWrapper">
