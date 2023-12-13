@@ -28,7 +28,7 @@ function App() {
 
     </Routes>
       {/* <Register /> */}
-      
+      {/*  */}
     </ContextProvider>
     </BrowserRouter>
   );
