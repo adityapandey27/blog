@@ -7,8 +7,19 @@
     background:linear-gradient(rgba(255,255,255,0.5),rgba(255,255,255,0.5)), url('https://images.pexels.com/photos/768473/pexels-photo-768473.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500');
     background-size: cover;
 }
+.login-container{
+    border: 2px solid rgba(0, 0, 0, 0.291);
+    padding: 30px;
+    width: 25%;
+    height: 60%;
+    background-color: rgba(0, 128, 128, 0.484);
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px 8px rgba(0, 0, 0, 0.479);
+}
 .loginTitle{
+    font-size: 30px;
     font-style: 50px;
+    font-weight: 700;
 }
 .loginForm{
     margin-top: 20px;

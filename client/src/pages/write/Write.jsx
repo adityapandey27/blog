@@ -7,8 +7,6 @@ export default function Write() {
   const [desc,setDesc]=useState("");
   const [file,setFile]=useState(null);
   const {user}=useContext(Context);
-  console.log("jjjjjjjj",user);
-
   const handleSubmit= async(e)=>{
     e.preventDefault();
     const newPost={
@@ -67,6 +65,7 @@ export default function Write() {
         </div>
         <button className="writeSubmit" type='submit'>Publish</button>
       </form>
+      
     </div>
   )
 }

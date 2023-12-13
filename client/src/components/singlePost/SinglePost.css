@@ -1,5 +1,6 @@
 .singlePost{
     flex: 9;
+    padding: 5px;
     
 }
 
@@ -67,6 +68,7 @@ color: #b39656;
     text-align: center;
     border: none;
     border-bottom: 1px solid gray;
+    width: 100%;
 }
 
 .singlePostTitleInput:focus{
@@ -77,6 +79,8 @@ border: none;
 color: #6666;
 font-size: 18px;
 line-height: 25px;
+height: 80px;
+width: 100%;
 }
 .singlePostDescInput:focus{
     outline: none;
@@ -91,4 +95,24 @@ line-height: 25px;
         cursor: pointer;
         align-items: flex-end;
         margin-top: 20px;
+        background-color: teal;
+    }
+
+    .singlePostCancleButton{
+        border: none;
+        border-color: teal;
+        width: 100px;
+        padding: 5px;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        align-items: flex-end;
+        margin-top: 20px;
+        background-color: lightcoral;
+    }
+    .singlePostButtonContainer{
+        width: 30%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
     }

@@ -18,7 +18,7 @@ router.post("/register",async (req,res)=>{
         // if using async function always use try and catch becase we are going to perform multiple task and any one would fail
         
         // const newUser=new User(req.body)
-        // ignore using this way beacuse initially we only need 3 thing but bracuse we are pasing the whole object It may take every thing
+        // ignore using this way beacuse initially we only need 3 thing but becanuse we are pasing the whole object It may take every thing
 
 
         // it is a last step read the below comment first

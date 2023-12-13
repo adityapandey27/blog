@@ -1,10 +1,10 @@
 import React, { useEffect, useState ,useContext} from "react";
 import { Context } from '../../context/Context';
-
 import "./SinglePost.css";
 import axios from "axios";
 import { Link, useLocation } from "react-router-dom";
 import Environment from "../../assets/environment.jpg";
+import { Blocks } from 'react-loader-spinner'
 export default function SinglePost() {
 
   const location=useLocation()
@@ -15,21 +15,22 @@ export default function SinglePost() {
   const [title,setTitle]=useState("");
   const [desc,setDesc]=useState("");
   const [updateMode,setUpdateMode]=useState(false);
+  const [loader,setLoader]=useState(true)
+  
 
   useEffect(()=>{
     const getPost=async ()=>{
       const res= await axios.get("/post/"+path);
-      console.log("resssssssssssssssssssss",res.data);
       setPosts(res.data)
       setTitle(res.data.title);
       setDesc(res.data.desc);
+      setLoader(false)
     }
     getPost()
-  },[path]);
+  },[path,updateMode]);
 
   const handleDelete=async()=>{
     try{
-      console.log(user.username);
       await axios.delete(`/post/${post._id}`,{data:{username:user.username}});
       window.location.replace("/");
     }catch(error){
@@ -38,21 +39,35 @@ export default function SinglePost() {
   }
 
   const handleUpdate=async()=>{
+    setLoader(!loader)
     try{
       await axios.put(`/post/${post._id}`,{
         data:{username:user.username,title,desc},
       });
-      // window.location.reload();
       setUpdateMode(false);
-
     }catch(error){
 
     }
   }
 
-  console.log("[][][][[][[][][]",post);
   return (
     <div className="singlePost">
+      {
+      loader?
+      <div style={{width:'100%',height:"100%",display:'flex',justifyContent:"center",alignItems:"center"}}>
+       <Blocks
+       
+      visible={true}
+      height="50"
+      width="50"
+      ariaLabel="Blocks-loading"
+      wrapperStyle={{}}
+      wrapperClass=""
+      colors={['#306cce', '#72a1ed']}
+      />
+      </div>
+      :
+  <>
       <div className="singlePostWrapper">
         <img className="singlePostImg" src={PF+post.photo} alt="Cute" />
       </div>
@@ -91,6 +106,7 @@ export default function SinglePost() {
          }
         </span>
         
+        
       </div>
       {
         updateMode?(
@@ -100,9 +116,16 @@ export default function SinglePost() {
             <p className="singlePostDesc">{desc}</p>
           )
         }
-        <button className="singlePostButton"
+       {
+        updateMode? (<div className="singlePostButtonContainer"><button className="singlePostButton"
         onClick={handleUpdate}
         >Update</button>
+        <button onClick={()=>setUpdateMode(!updateMode)} className="singlePostCancleButton">Cancle</button></div>
+        ):""
+       }
+       </> 
+      }
     </div>
+   
   );
 }
