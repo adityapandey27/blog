@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Context } from '../../context/Context';
 import "./Write.css"
+import ShowWarningBox from '../../shared/ShowWarning';
 import axios from 'axios';
 export default function Write() {
   const [title,setTitle]=useState("");
@@ -8,7 +9,7 @@ export default function Write() {
   const [file,setFile]=useState(null);
   const {user}=useContext(Context);
   console.log("jjjjjjjj",user);
-
+  const [showWarning,setShowWarning]=useState(user?false:true);
   const handleSubmit= async(e)=>{
     e.preventDefault();
     const newPost={
@@ -67,6 +68,11 @@ export default function Write() {
         </div>
         <button className="writeSubmit" type='submit'>Publish</button>
       </form>
+      {
+        showWarning?<ShowWarningBox onClick={()=>setShowWarning(!showWarning)}
+        showWarning={showWarning} setShowWarning={setShowWarning}
+        ></ShowWarningBox>:""
+      }
     </div>
   )
 }
