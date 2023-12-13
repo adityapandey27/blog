@@ -85,6 +85,7 @@ export default function SinglePost() {
          }
         </span>
         
+        
       </div>
       {
         updateMode?(
@@ -94,9 +95,13 @@ export default function SinglePost() {
             <p className="singlePostDesc">{desc}</p>
           )
         }
-        <button className="singlePostButton"
+       {
+        updateMode? (<div className="singlePostButtonContainer"><button className="singlePostButton"
         onClick={handleUpdate}
         >Update</button>
+        <button onClick={()=>setUpdateMode(!updateMode)} className="singlePostCancleButton">Cancle</button></div>
+        ):""
+       } 
     </div>
   );
 }

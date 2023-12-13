@@ -28,6 +28,8 @@ export default function Login() {
   console.log(isFetching);
   return (
     <div className='login'>
+      <div className="login-container">
+
         <span className="loginTitle">Login</span>
         <form  className="loginForm" onSubmit={handleSubmit}>
             <label >Username</label>
@@ -46,6 +48,7 @@ export default function Login() {
         <button className="loginRegisterButton" >
           <Link className='link' to='/register'>Register</Link>
         </button>
+            </div>
     </div>
   )
 }

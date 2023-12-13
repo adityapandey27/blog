@@ -4,7 +4,7 @@ const UserSchema=new mongoose.Schema({
     username:{
         type:String,
         required:true,
-        unique:true,
+        unique:true
     },
     email:{
         type:String,
@@ -26,4 +26,4 @@ const UserSchema=new mongoose.Schema({
 {timestamps:true})
 
 module.exports=mongoose.model("User",UserSchema)
-// model name is User and model us UserSchema
+// model name is User and model is UserSchema

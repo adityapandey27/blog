@@ -24,6 +24,7 @@ export default function Register() {
     }
   return (
     <div className='Register'>
+      <div className='register-container'>
         <span className="RegisterTitle">Register</span>
         <form  className="RegisterForm" onSubmit={handleSubmit}>
           <label >Username</label>
@@ -45,6 +46,7 @@ export default function Register() {
           error&&
         <span>Some thing went wrong</span>
         }
+        </div>
     </div>
   )
 }
