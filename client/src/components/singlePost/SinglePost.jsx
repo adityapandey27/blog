@@ -4,6 +4,7 @@ import "./SinglePost.css";
 import axios from "axios";
 import { Link, useLocation } from "react-router-dom";
 import Environment from "../../assets/environment.jpg";
+import { Blocks } from 'react-loader-spinner'
 export default function SinglePost() {
 
   const location=useLocation()
@@ -14,6 +15,8 @@ export default function SinglePost() {
   const [title,setTitle]=useState("");
   const [desc,setDesc]=useState("");
   const [updateMode,setUpdateMode]=useState(false);
+  const [loader,setLoader]=useState(true)
+  
 
   useEffect(()=>{
     const getPost=async ()=>{
@@ -21,6 +24,7 @@ export default function SinglePost() {
       setPosts(res.data)
       setTitle(res.data.title);
       setDesc(res.data.desc);
+      setLoader(false)
     }
     getPost()
   },[path,updateMode]);
@@ -35,6 +39,7 @@ export default function SinglePost() {
   }
 
   const handleUpdate=async()=>{
+    setLoader(!loader)
     try{
       await axios.put(`/post/${post._id}`,{
         data:{username:user.username,title,desc},
@@ -47,6 +52,22 @@ export default function SinglePost() {
 
   return (
     <div className="singlePost">
+      {
+      loader?
+      <div style={{width:'100%',height:"100%",display:'flex',justifyContent:"center",alignItems:"center"}}>
+       <Blocks
+       
+      visible={true}
+      height="50"
+      width="50"
+      ariaLabel="Blocks-loading"
+      wrapperStyle={{}}
+      wrapperClass=""
+      colors={['#306cce', '#72a1ed']}
+      />
+      </div>
+      :
+  <>
       <div className="singlePostWrapper">
         <img className="singlePostImg" src={PF+post.photo} alt="Cute" />
       </div>
@@ -101,7 +122,10 @@ export default function SinglePost() {
         >Update</button>
         <button onClick={()=>setUpdateMode(!updateMode)} className="singlePostCancleButton">Cancle</button></div>
         ):""
-       } 
+       }
+       </> 
+      }
     </div>
+   
   );
 }
