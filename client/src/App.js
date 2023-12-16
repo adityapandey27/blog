@@ -7,8 +7,10 @@ import Settings from "./pages/settings/Settings";
 import Single from "./pages/single/Single";
 import Write from "./pages/write/Write";
 import SinglePost from "./components/singlePost/SinglePost";
+import Contact from "./pages/contact/Contact";
 import { Context, ContextProvider } from "./context/Context";
 import { useContext } from "react";
+import AboutUs from "./pages/about/About";
 function App() {
   const {user}=useContext(Context);
   console.log("user============",user);
@@ -25,6 +27,8 @@ function App() {
       <Route path="/write"element={user?<Write/>:<Register/>}/>
       <Route path="/settings" element={user?<Settings/>:<Register/>} />
       <Route path="/post/:postId" element={<Single />} />
+      <Route path="/contact" element={<Contact/>}/>
+      <Route path="/about" element={<AboutUs/>}/>
 
     </Routes>
       {/* <Register /> */}
