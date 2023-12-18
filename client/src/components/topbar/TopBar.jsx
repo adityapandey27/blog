@@ -13,10 +13,23 @@ export default function TopBar() {
   return (
     <div className="top">
       <div className="topLeft">
-        <i className="fa-brands fa-facebook topIcons" />
+        <a href="https://twitter.com/tweeter" target="_blank">
         <i className="fa-brands fa-twitter topIcons" />
-        <i className="fa-brands fa-pinterest topIcons" />
+
+        </a>
+        <a href="https://www.instagram.com/" target="_blank">
         <i className="fa-brands fa-instagram topIcons"></i>
+
+        </a>
+        <a href="https://in.pinterest.com/" target="_blank">
+
+        <i className="fa-brands fa-pinterest topIcons" />
+        </a>
+        <a href="https://www.facebook.com/" target="_blank">
+
+        <i className="fa-brands fa-facebook topIcons" />
+        </a>
+        
       </div>
       <div className="topCenter">
         <ul className="topList">
@@ -35,15 +48,20 @@ export default function TopBar() {
               CONTACT
             </Link>
           </li>
-          <li className="topListItem">
+          {
+            user ?<li className="topListItem">
             <Link className="link" to="/write">
               WRITE
             </Link>
-          </li>
+          </li>:""
+          }
+          
           <li onClick={handleLogout} className="topListItem">{user && "LOGOUT"}</li>
         </ul>
       </div>
       <div className="topRight">
+      
+     
         {user ? (
           <Link to="/settings" className="link">
           <img
@@ -67,7 +85,7 @@ export default function TopBar() {
           </ul>
         )}
 
-        <i className="fa-solid fa-magnifying-glass searchIcon"></i>
+        
       </div>
     </div>
   );

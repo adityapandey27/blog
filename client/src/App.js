@@ -24,7 +24,7 @@ function App() {
       <Route path="/register" element={<Register/>} />
       <Route path="/login" element={<Login/>} />
       {/* <Route path="/write"element={<Write/>}/> */}
-      <Route path="/write"element={user?<Write/>:<Register/>}/>
+      <Route path="/write"element={<Write/>}/>
       <Route path="/settings" element={user?<Settings/>:<Register/>} />
       <Route path="/post/:postId" element={<Single />} />
       <Route path="/contact" element={<Contact/>}/>
