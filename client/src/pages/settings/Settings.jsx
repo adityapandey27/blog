@@ -55,7 +55,7 @@ export default function Settings() {
             <img
               src={file ? URL.createObjectURL(file):user.profilePic}
               alt=""
-              // className="settingsImg"
+              className="settingsImg"
             ></img>
 
             <label htmlFor="fileInput">

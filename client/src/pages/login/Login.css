@@ -43,6 +43,15 @@
     border-radius: 10px;
     padding: 10px;
 }
+.guestLogin{
+    margin-top: 20px;
+    cursor: pointer;
+    background-color: teal;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
 .loginButton:disabled{
     cursor: not-allowed;
     background-color: rgb(236, 159, 159);
