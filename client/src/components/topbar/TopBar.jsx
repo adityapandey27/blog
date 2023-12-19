@@ -10,6 +10,7 @@ export default function TopBar() {
     dispatch({type:"LOGOUT"});
     window.location.replace("/");
   }
+  console.log("userrrrrrrrrrr==========",user);
   return (
     <div className="top">
       <div className="topLeft">
@@ -66,7 +67,7 @@ export default function TopBar() {
           <Link to="/settings" className="link">
           <img
             className="topImage"
-            src={user.profilePic??Cute}
+            src={user.profilePicture.length>0?user.profilePicture :Cute}
             alt=""
           />
           </Link>

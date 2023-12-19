@@ -1,4 +1,10 @@
-.home{
+.home {
+  display: flex;
+}
+
+@media only screen and (max-width: 470px) {
+  .home{
     display: flex;
-    
+    flex-direction: column;
+  }
 }

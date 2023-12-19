@@ -49,9 +49,31 @@
     cursor: pointer;
 }
 
-.searchIcon{
-    font-size: 18px;
-    color: #666;
-    cursor: pointer;
-    margin-left: 15px;
+
+
+@media only screen and (max-width: 470px) {
+    .top{
+        /* display: none; */
+        width: 100%;
+    }
+    .topLeft{
+        display: none;
+    }
+    .topCenter{
+        flex: 12;
+    }
+
+    .topListItem{
+        margin-right: 10px;
+        font-size: 13px;
+        font-weight: 300;
+        cursor: pointer;
+    }
+    .topImage{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    
 }
