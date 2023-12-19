@@ -26,3 +26,15 @@
     margin-top: 80px;
     object-fit: cover;
 }
+
+@media only screen and (max-width: 470px) {
+    .header{
+        margin-top: 0px;
+    }
+
+    .headerImage{
+        height: 450px;
+        margin-top: 40px;
+        object-fit: cover;
+    }
+  }
