@@ -1,6 +1,4 @@
-.header{
-    margin-top: 0px;
-}
+
 .headerTitle{
     display: flex;
     flex-direction: column;
@@ -9,18 +7,21 @@
     color: #444;
 }
 
+
 .headerTitleSm{
     position: absolute;
     top:18%;
     font-size: 25px;
-    color: teal;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: coral;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 .headerTitleLg{
     position: absolute;
     top: 20%;
     font-size: 100px;
-    color: coral;
+    font-family:cursive;
+    color: teal;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
@@ -30,14 +31,19 @@
     object-fit: cover;
 }
 
-@media only screen and (max-width: 470px) {
-    .header{
-        margin-top: 0px;
-    }
 
+@media only screen and (max-width: 470px) {
+   
     .headerImage{
-        height: 450px;
-        margin-top: 40px;
+        height: 250px;
         object-fit: cover;
+    }
+    .headerTitleSm{
+        top:18%;
+        font-size: 20px;
+    }
+    .headerTitleLg{
+        top: 20%;
+        font-size: 60px;
     }
   }
