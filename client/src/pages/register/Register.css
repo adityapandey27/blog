@@ -55,3 +55,9 @@
     color: white;
     border-radius: 10px;
 }
+
+@media only screen and (max-width: 470px) {
+    .register-container{
+        width: 80%;
+    }
+}
