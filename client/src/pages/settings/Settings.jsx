@@ -10,9 +10,8 @@ export default function Settings() {
   const [username,setUsername]=useState("");
   const [email,setEmail]=useState("");
   const [password,setPassword]=useState("");
-
+console.log("userrrrrrrrrrrrrr",user);
   const handleSubmit= async(e)=>{
-  
     e.preventDefault();
     const updatedUser={
       userId:user._id,
@@ -28,7 +27,7 @@ export default function Settings() {
       data.append("file",file);
       updatedUser.porfilePic=filename;
       try{
-        await axios.post("/upload",data)
+        await axios.put(`/:${user._id}`,data)
       }catch(Error)
       {
 
@@ -53,7 +52,7 @@ export default function Settings() {
           <label>Profile Picture</label>
           <div className="settingsPP">
             <img
-              src={file ? URL.createObjectURL(file):user.profilePic}
+              src={file ? URL.createObjectURL(file):user.profilePicture}
               alt=""
               className="settingsImg"
             ></img>
@@ -74,7 +73,7 @@ export default function Settings() {
           <button className="settingsSubmit" type="submit">Update</button>
         </form>
       </div>
-      <Sidebar />
+      {/* <Sidebar /> */}
     </div>
   );
 }

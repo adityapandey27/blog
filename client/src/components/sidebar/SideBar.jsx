@@ -1,18 +1,18 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./SideBar.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Building from '../../assets/building.png'
+import Building from "../../assets/building.png";
 export default function SideBar() {
-  const [cats,setCats]=useState([]);
-  useEffect(()=>{
-    const getCats=async ()=>{
-      const res=await axios.get("/categories");
+  const [cats, setCats] = useState([]);
+  useEffect(() => {
+    const getCats = async () => {
+      const res = await axios.get("/categories");
       setCats(res.data);
-    }
+    };
     getCats();
-  },[])
-  console.log("side Bar=>>>>>>>>>",cats);
+  }, []);
+  console.log("side Bar=>>>>>>>>>", cats);
   return (
     <div className="sidebar">
       <div className="sidebarItem">
@@ -27,24 +27,29 @@ export default function SideBar() {
       <div className="sidebarItem">
         <span className="sidebarTitle">CATEGORIES</span>
         <ul className="sidebarList">
-          {
-            cats.map(item=>(
-              <Link className="link" to={`/?cat=${item.name}`}>
+          {cats.map((item) => (
+            <Link className="link" to={`/?cat=${item.name}`}>
               <li className="sidebarListItem">{item.name}</li>
-              </Link>
-            ))
-          }
-          
+            </Link>
+          ))}
         </ul>
       </div>
 
       <div className="sidebarItem">
         <span className="sidebarTitle">FOLLOW US</span>
         <ul className="sidebarSocial">
-          <i className="sidebarIcon fa-brands fa-facebook topIcons" />
-          <i className="sidebarIcon fa-brands fa-twitter topIcons" />
-          <i className="sidebarIcon fa-brands fa-pinterest topIcons" />
-          <i className="sidebarIcon fa-brands fa-instagram topIcons"/>
+          <a href="https://twitter.com/tweeter" target="_blank">
+            <i className="fa-brands fa-twitter topIcons" />
+          </a>
+          <a href="https://www.instagram.com/" target="_blank">
+            <i className="fa-brands fa-instagram topIcons"></i>
+          </a>
+          <a href="https://in.pinterest.com/" target="_blank">
+            <i className="fa-brands fa-pinterest topIcons" />
+          </a>
+          <a href="https://www.facebook.com/" target="_blank">
+            <i className="fa-brands fa-facebook topIcons" />
+          </a>
         </ul>
       </div>
     </div>
