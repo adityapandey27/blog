@@ -115,3 +115,15 @@ width: 100%;
         display: flex;
         justify-content: space-between;
     }
+
+
+
+    @media only screen and (max-width: 470px) {
+        .singlePost{
+            flex: 9;
+            padding: 5px;
+            
+        }
+        
+        
+    }

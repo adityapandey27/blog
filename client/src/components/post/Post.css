@@ -77,3 +77,12 @@
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
 }
+@media only screen and (max-width: 470px) {
+    .post{
+        width: 385px;
+        margin: 0px 25px 20px 25px;
+        height: 500px;
+        padding: 5px;
+        cursor: pointer;
+    }  
+}
