@@ -67,10 +67,13 @@ export default function SinglePost() {
       />
       </div>
       :
-  <>
+      <>
       <div className="singlePostWrapper">
         <img className="singlePostImg" src={PF+post.photo} alt="Cute" />
       </div>
+      <div style={{width:"95%",margin:"0 auto"}}>
+
+      
       {
         updateMode?<input type="text" value={title} autoFocus className="singlePostTitleInput"
         onChange={(e)=>{setTitle(e.target.value)}}
@@ -122,9 +125,13 @@ export default function SinglePost() {
         >Update</button>
         <button onClick={()=>setUpdateMode(!updateMode)} className="singlePostCancleButton">Cancle</button></div>
         ):""
-       }
-       </> 
+      
       }
+      </div>
+       </> 
+       
+      }
+      
     </div>
    
   );
