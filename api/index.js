@@ -9,13 +9,19 @@ const authRoute=require('./routes/auth')
 const userRoute=require('./routes/users')
 const postRoute=require('./routes/post')
 const categoryRoute=require('./routes/categories')
-
+const cors=require("cors")
 
 dotenv.config();
 
 app.use(express.json())
+app.use(cors({
+    origin : process.env.CORS_ORIGIN,
+    credentials:true
+}))
 app.use("/images", express.static(path.join(__dirname, "/images")));
-
+app.get("/",(req,res)=>{
+  res.json({message:"Hello ji"})
+})
 mongoose.connect(process.env.MONGO_URL).then(
     console.log("Connected to mongo")
 ).catch((error)=>{
@@ -46,8 +52,8 @@ app.use('/api/categories',categoryRoute);
 
 
 
-app.listen("5000",()=>{
-    console.log("Backend is running");
+app.listen(process.env.PORT||3000,()=>{
+    console.log("Backend is running at ",process.env.PORT||3000);
 })
 
 // {

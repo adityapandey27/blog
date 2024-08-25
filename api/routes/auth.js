@@ -36,7 +36,7 @@ router.post("/register",async (req,res)=>{
 
         // to save the user
         const user=await newUser.save();
-
+        
         res.status(200).json(user);
 
         // 23:00
