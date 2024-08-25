@@ -10,15 +10,14 @@ export default function TopBar() {
     dispatch({type:"LOGOUT"});
     window.location.replace("/");
   }
-  console.log("userrrrrrrrrrr==========",user);
   return (
     <div className="top">
       <div className="topLeft">
-        <a href="https://twitter.com/tweeter" target="_blank">
+        <a href="https://twitter.com/AdityaPand27187" target="_blank">
         <i className="fa-brands fa-twitter topIcons" />
 
         </a>
-        <a href="https://www.instagram.com/" target="_blank">
+        <a href="https://www.instagram.com/0_o.aditya.0_o/" target="_blank">
         <i className="fa-brands fa-instagram topIcons"></i>
 
         </a>
