@@ -7,14 +7,15 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import { Hourglass,Blocks } from "react-loader-spinner";
+import {getRequest} from "../../api_request"
 export default function Home() {
   const [posts, setPosts] = useState([]);
   const [loader, setLoader] = useState(true);
   const { search } = useLocation();
-  console.log("location priting", search);
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axios.get("/post" + search);
+      const res = await getRequest("/post" + search);
+      console.log("ressssssssssss 11111111111",res.data)
       setPosts(res.data);
       setLoader(false);
     };

@@ -3,7 +3,7 @@ import "./Post.css"
 import TranspoterCraft from '../../assets/transpoter.jpg'
 import { Link } from 'react-router-dom';
 export default function Post({item}) {
-  const PF="http://localhost:5000/images/"
+  const PF="https://api-zeta-gold.vercel.app/images/"
   return (
     <div className='post'>
       <Link to={`/post/${item._id}`} className='link'>
