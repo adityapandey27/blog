@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Context } from '../../context/Context';
 import "./Write.css"
 import axios from 'axios';
+import {postRequest} from "../../api_request"
 export default function Write() {
   const [title,setTitle]=useState("");
   const [desc,setDesc]=useState("");
@@ -14,24 +15,27 @@ export default function Write() {
       title,
       desc
     };
+    console.log("kkkkkkkkkkkkkkkkkkkkkk file========",file)
     if(file)
     {
+      console.log("kkkkkkkkkkkkkkkkkkkkkk file========index",file)
+      console.log("file found",file)
       const data=new FormData();
       const filename=Date.now()+file.name;
       data.append("name",filename);
       data.append("file",file);
       newPost.photo=filename;
       try{
-        await axios.post("/upload",data)
+        await postRequest("/upload",data)
       }catch(Error)
       {
-
+        console.log(Error)
       }
       
     }
     try{
 
-     const res= await axios.post("/post",newPost)
+     const res= await postRequest("/post",newPost)
      window.location.replace('/post/'+res.data._id);
     }
     catch(error)

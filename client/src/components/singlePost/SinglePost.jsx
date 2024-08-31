@@ -5,11 +5,12 @@ import axios from "axios";
 import { Link, useLocation } from "react-router-dom";
 import Environment from "../../assets/environment.jpg";
 import { Blocks } from 'react-loader-spinner'
+import {postRequest,putRequest,deleteRequest,getRequest} from "../../api_request";
 export default function SinglePost() {
 
   const location=useLocation()
   const [post,setPosts]=useState({})
-  const PF="http://localhost:5000/images/"
+  const PF="https://api-zeta-gold.vercel.app/images/"
   const {user}=useContext(Context);
   const path=location.pathname.split("/")[2]
   const [title,setTitle]=useState("");
@@ -20,7 +21,7 @@ export default function SinglePost() {
 
   useEffect(()=>{
     const getPost=async ()=>{
-      const res= await axios.get("/post/"+path);
+      const res= await getRequest("/post/"+path);
       setPosts(res.data)
       setTitle(res.data.title);
       setDesc(res.data.desc);
@@ -31,7 +32,7 @@ export default function SinglePost() {
 
   const handleDelete=async()=>{
     try{
-      await axios.delete(`/post/${post._id}`,{data:{username:user.username}});
+      await deleteRequest(`/post/${post._id}`,{data:{username:user.username}});
       window.location.replace("/");
     }catch(error){
 
@@ -41,7 +42,7 @@ export default function SinglePost() {
   const handleUpdate=async()=>{
     setLoader(!loader)
     try{
-      await axios.put(`/post/${post._id}`,{
+      await putRequest(`/post/${post._id}`,{
         data:{username:user.username,title,desc},
       });
       setUpdateMode(false);

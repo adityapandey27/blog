@@ -21,7 +21,6 @@ export default function Contact() {
     // e.preventDefault();
     // Add your form submission logic here
     alert("submited");
-    console.log('Form Data:', formData);
   };
 
   return (

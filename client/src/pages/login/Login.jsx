@@ -3,6 +3,7 @@ import "./Login.css"
 import { Link } from 'react-router-dom'
 import { Context} from '../../context/Context'
 import axios from 'axios';
+import {postRequest} from "../../api_request"
 export default function Login() {
   const userRef=useRef();
   const passwordRef=useRef();
@@ -12,7 +13,7 @@ export default function Login() {
     e.preventDefault();
     dispatch({type:"LOGIN_START"});
     try{
-      const res = await axios.post("/auth/login",{
+      const res = await postRequest("/auth/login",{
         username:userRef.current.value,
         password:passwordRef.current.value,
       })
@@ -25,7 +26,6 @@ export default function Login() {
 
   }
 
-  console.log(isFetching);
   return (
     <div className='login'>
       <div className="login-container">

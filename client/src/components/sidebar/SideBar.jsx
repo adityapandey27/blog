@@ -3,16 +3,16 @@ import "./SideBar.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Building from "../../assets/building.png";
+import {getRequest} from "../../api_request";
 export default function SideBar() {
   const [cats, setCats] = useState([]);
   useEffect(() => {
     const getCats = async () => {
-      const res = await axios.get("/categories");
+      const res = await getRequest("/categories");
       setCats(res.data);
     };
     getCats();
   }, []);
-  console.log("side Bar=>>>>>>>>>", cats);
   return (
     <div className="sidebar">
       <div className="sidebarItem">

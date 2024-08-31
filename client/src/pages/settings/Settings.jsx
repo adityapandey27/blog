@@ -4,13 +4,13 @@ import Sidebar from "../../components/sidebar/SideBar";
 import { Context } from "../../context/Context";
 import { useState } from "react";
 import  axios  from "axios";
+import {putRequest,postRequest} from "../../api_request"
 export default function Settings() {
   const {user}=useContext(Context);
   const [file,setFile]=useState(null);
   const [username,setUsername]=useState("");
   const [email,setEmail]=useState("");
   const [password,setPassword]=useState("");
-console.log("userrrrrrrrrrrrrr",user);
   const handleSubmit= async(e)=>{
     e.preventDefault();
     const updatedUser={
@@ -27,7 +27,7 @@ console.log("userrrrrrrrrrrrrr",user);
       data.append("file",file);
       updatedUser.porfilePic=filename;
       try{
-        await axios.put(`/:${user._id}`,data)
+        await putRequest(`/:${user._id}`,data)
       }catch(Error)
       {
 
@@ -36,7 +36,7 @@ console.log("userrrrrrrrrrrrrr",user);
     }
     try{
 
-     await axios.post("/users/"+user._id,updatedUser)
+     await postRequest("/users/"+user._id,updatedUser)
     }
     catch(error)
     {}

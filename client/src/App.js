@@ -13,7 +13,6 @@ import { useContext } from "react";
 import AboutUs from "./pages/about/About";
 function App() {
   const {user}=useContext(Context);
-  console.log("user============",user);
   return (
     <BrowserRouter>
     <ContextProvider>
