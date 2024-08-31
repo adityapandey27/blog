@@ -12,10 +12,8 @@ router.put("/:id",async (req,res)=>{
         // in case user want to update the password then we are hasing the passowrd again and storing the hashed password in the same key and using $set req.body to update all the values se nt by user to update
         if(req.body.password)
         {
-            console.log("=======",req.body.password);
             const salt=await bcrypt.genSalt(10);
             req.body.password=await bcrypt.hash(req.body.password,salt);
-            console.log("=======",req.body.password);
          }
 
         try{

@@ -19,16 +19,12 @@ router.post("/",async (req,res)=>{
 router.put("/:id",async (req,res)=>{
      try{
         const post=await Post.findById(req.params.id);
-        console.log("postt",post.username);
-        console.log("req.body",req.body.data);
-        console.log(post.username===req.body.data.username);
         if(post.username === req.body.data.username)
         {
             try{
                 const updatedPost= await Post.findByIdAndUpdate(req.params.id,{
                     $set:req.body.data
                 },{new:true})
-                console.log("inside",updatedPost);
                 res.status(200).json(updatedPost)
             }catch(error)
             {
@@ -55,14 +51,10 @@ router.delete("/:id",async (req,res)=>{
         if(post.username === req.body.username)
         {
             try{
-              console.log("her pass");
-              console.log("post  check delete",post);
                 const a=await post.deleteOne();
-                console.log("a",a);
                 res.status(200).json("Post has been deleted...")
               }catch(error)
               {
-              console.log("herefails");
                 res.status(500).json(error)
             }
             
@@ -78,8 +70,6 @@ router.delete("/:id",async (req,res)=>{
 
 // GET POST
 router.get("/:id",async (req,res)=>{
-  console.log("I am here");
-  console.log("req",req);
 try{
     const post=await Post.findById(req.params.id);
     res.status(200).json(post);
